@@ -1,4 +1,4 @@
-@extends('admin.nav')
+@extends('admin.navop')
 @section('contents')
 {{-- <br><br><br><br><br> --}}
 
@@ -7,8 +7,6 @@
         Ajouts d'un Clients
 
     </button>
-    <br>
-    <br>
 @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}
@@ -22,21 +20,68 @@
     <table id="tabsous" class="table align-middle mb-0 bg-white ">
         <thead class="bg-warning">
             <tr>
+
+                {{-- <th class="l1">Date Paiement</th> --}}
                 <th class="l1" >Structure</th>
                 <th class="l1" >Telephone</th>
+                {{-- <th class="l1" > Type Local</th> --}}
+                {{-- <th class="l1" >Categorie</th>
+                <th class="l1">Montant Encaisses</th>
+                <th class="l1" >Pas de porte</th>
+                <th class="l1" >remise</th>
+                <th class="l1" > facilite paiement</th>
+                <th class="l1" >Caution</th> --}}
                 <th class="l1" >Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($clients as $per)
             <tr>
+                {{-- <td>{{$per->datePaiment}}</td> --}}
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a></td>
+                {{-- <td>{{$per->local}}</td> --}}
+                {{-- <td>{{$per->categorie}}</td>
+                <td>{{$per->montantEncaisse}}</td>
+                <td>{{$per->PasDePorte}}</td>
+                <td>{{$per->remise}}%</td>
+                <td>{{$per->faciliteDePayment}}</td>
+                <td>{{$per->caution}}</td> --}}
+
+                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">plus</a></td>
             </tr>
             @endforeach
         </tbody>
-       
+        {{-- <script>
+            $(document)
+                    .ready(
+                            function() {
+                                $('#tabsous')
+                                        .DataTable(
+                                                {
+                                                    "searching" : true,
+                                                    "info" : false,
+                                                    "bLengthChange" : false,
+                                                    "pageLength" : 10,
+                                                    "language" : {
+                                                        "sEmptyTable" : "Aucune donnée disponible dans le tableau",
+                                                        "sInfoPostFix" : "",
+                                                        "sInfoThousands" : ",",
+                                                        "oPaginate" : {
+                                                            "sNext" : "Suivant",
+                                                            "sPrevious" : "Précédent"
+                                                        }
+                                                    },
+                                                    "aaSorting" : [],
+                                                    columnDefs : [ {
+                                                        orderable : false,
+                                                        targets : 4
+                                                    } ]
+                                                });
+                                $('.dataTables_length').addClass(
+                                        'bs-select');
+                            });
+        </script> --}}
     </table>
 </div>
 <!-- Button trigger modal -->

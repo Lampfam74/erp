@@ -1,4 +1,4 @@
-@extends('admin.nav')
+@extends('admin.navop')
 @section('contents')
 {{-- <br><br><br><br><br> --}}
 
@@ -7,8 +7,6 @@
         Ajouts d'un Clients
 
     </button>
-    <br>
-    <br>
 @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}
@@ -22,6 +20,8 @@
     <table id="tabsous" class="table align-middle mb-0 bg-white ">
         <thead class="bg-warning">
             <tr>
+
+               
                 <th class="l1" >Structure</th>
                 <th class="l1" >Telephone</th>
                 <th class="l1" >Actions</th>
@@ -32,11 +32,10 @@
             <tr>
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a></td>
+                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">plus</a></td>
             </tr>
             @endforeach
         </tbody>
-       
     </table>
 </div>
 <!-- Button trigger modal -->

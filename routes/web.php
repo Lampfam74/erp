@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-    use App\Http\Controllers\ UserController;
-    use App\Http\Controllers\ AssociationController;
-    use App\Http\Controllers\ SalesController;
-    use App\Http\Controllers\ClientsController;
-    use App\Http\Controllers\ProspecteController;
-    use App\Http\Controllers\OffreController;
-    use App\Http\Controllers\ReservationController;
+    use App\Http\Controllers\ {UserController
+   , AssociationController
+   , CddController, SalesController
+   ,ClientsController
+   , ContratsController, ForfaitsController, LocalsController, ProspecteController
+   ,OffreController
+   , RemisesController, ReservationController, TypePaiementController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,13 +28,21 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-    // Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class);
     Route::resource('association', AssociationController::class);
     Route::resource('Sales', SalesController::class);
     Route::resource('clients', ClientsController::class);
     Route::resource('prospecte', ProspecteController::class);
     Route::resource('offres', OffreController::class);
     Route::resource('reservation', ReservationController::class);
+    Route::resource('remises', RemisesController::class);
+    Route::resource('contrats', ContratsController::class);
+    Route::resource('local', LocalsController::class);
+    Route::resource('typepaiement', TypePaiementController::class);
+    Route::resource('forfaits', ForfaitsController::class);
     });
-
+    Route::prefix('contrats')->middleware(['auth'])->group(function () {
+        Route::resource('cdd',CddController::class);
+        
+    });
 require __DIR__.'/auth.php';

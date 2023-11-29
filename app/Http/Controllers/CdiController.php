@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sales;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
-class SalesController extends Controller
+
+class CdiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,7 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $sales=Sales::where('soft_deleted',0)->get();
-        return view('sales.index',[
-            'sales'=>$sales
-        ]);
+        //
     }
 
     /**
@@ -44,23 +40,21 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $sales)
+    public function show($id)
     {
-        $sales=Sales::where('id',$sales)
-        ->where('soft_deleted',0)->get();
-       return $sales;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales $sales)
+    public function edit($id)
     {
         //
     }
@@ -69,10 +63,10 @@ class SalesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sales $sales)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +74,10 @@ class SalesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sales  $sales
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sales $sales)
+    public function destroy($id)
     {
         //
     }

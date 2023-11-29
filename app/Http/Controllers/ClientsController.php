@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
+use App\Models\Forfaits;
+use App\Models\Locals;
+use App\Models\Offre;
+use App\Models\typePaiement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class ClientsController extends Controller
@@ -14,8 +18,8 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        // $clients=Clients::where('soft_deleted',0);
-        $clients=Clients::all();
+        $clients=Clients::where('soft_deleted',0)->get();
+        // $clients=Clients::all();
         return view('clients.index',[
             'clients'=>$clients
         ]);
@@ -40,29 +44,30 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $valide=$request->validate([
-            'datePaiment' => 'required',
+        $request->validate([
+            // 'datePaiment' => 'required',
             'structure' => ['required', 'string','unique:Clients', 'max:255'],
-            'telephone' => ['required', 'string',  'max:255'],
-            'local' => ['required'],
-            'categorie' => ['required'],
-            'montantEncaisse' => ['required'],
-            'PasDePorte' => ['required'],
-            'remise' => ['required'],
-            'faciliteDePayment' => ['required'],
-            'caution' => ['required'],
-        ]);if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
+            'telephone' => ['required',],
+            // 'local' => ['required'],
+            // 'categorie' => ['required'],
+            // 'montantEncaisse' => ['required'],
+            // 'PasDePorte' => ['required'],
+            // 'remise' => ['required'],
+            // 'faciliteDePayment' => ['required'],
+            // 'caution' => ['required'],
+        ]);
+        // if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
         Clients::create([
-            'datePaiment' => $request['datePaiment'],
+            // 'datePaiment' => $request['datePaiment'],
             'structure' => $request['structure'],
             'telephone' => $request['telephone'],
-            'local' =>  $request['local'],
-            'categorie' => $request['categorie'],
-            'montantEncaisse' => $request['montantEncaisse'],
-            'PasDePorte' => $request['PasDePorte'],
-            'remise' =>  $request['remise'],
-            'faciliteDePayment' =>  $request['faciliteDePayment'],
-            'caution' =>  $request['caution'],
+            // 'local' =>  $request['local'],
+            // 'categorie' => $request['categorie'],
+            // 'montantEncaisse' => $request['montantEncaisse'],
+            // 'PasDePorte' => $request['PasDePorte'],
+            // 'remise' =>  $request['remise'],
+            // 'faciliteDePayment' =>  $request['faciliteDePayment'],
+            // 'caution' =>  $request['caution'],
             'user_id'=>Auth::user()->id,
 
         ]);
@@ -76,9 +81,22 @@ class ClientsController extends Controller
      * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function show(Clients $clients)
+    public function show($id)
     {
-        //
+        $clients=Clients::where('id',$id)
+        ->where('soft_deleted',0)->get();
+        $forfaits=Forfaits::where('soft_deleted',0)->get();
+        $typepaiement=typePaiement::where('soft_deleted',0)->get();
+        $locals=Offre::where('soft_deleted',0)->get();
+
+        $clients_id=$id;
+        return view('clients.show',[
+            'clients'=>$clients,
+            'id'=>$clients_id,
+            'forfaits'=>$forfaits,
+            'typepaiement'=>$typepaiement,
+            'locals'=>$locals
+        ]);
     }
 
     /**
@@ -87,9 +105,14 @@ class ClientsController extends Controller
      * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clients $clients)
+    public function edit($id)
     {
-        //
+        $clients= Clients::where('id',$id)
+        ->where('soft_deleted',0)->get();
+        // dd($clients);
+        return view('clients.show',[
+            'clients'=>$clients
+        ]);
     }
 
     /**

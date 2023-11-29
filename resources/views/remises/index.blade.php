@@ -1,4 +1,4 @@
-@extends('admin.nav')
+@extends('admin.navop')
 @section('contents')
 {{-- <br><br><br><br><br> --}}
 
@@ -7,8 +7,6 @@
         Ajouts d'un Clients
 
     </button>
-    <br>
-    <br>
 @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}
@@ -22,17 +20,27 @@
     <table id="tabsous" class="table align-middle mb-0 bg-white ">
         <thead class="bg-warning">
             <tr>
+
+                {{-- <th class="l1">Date Paiement</th> --}}
                 <th class="l1" >Structure</th>
                 <th class="l1" >Telephone</th>
+                {{-- <th class="l1" > Type Local</th> --}}
+                {{-- <th class="l1" >Categorie</th>
+                <th class="l1">Montant Encaisses</th>
+                <th class="l1" >Pas de porte</th>
+                <th class="l1" >remise</th>
+                <th class="l1" > facilite paiement</th>
+                <th class="l1" >Caution</th> --}}
                 <th class="l1" >Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($clients as $per)
             <tr>
+                {{-- <td>{{$per->datePaiment}}</td> --}}
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a></td>
+                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
             </tr>
             @endforeach
         </tbody>

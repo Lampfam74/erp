@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Font Awesome -->
 <link
-href="/css/all.min.css"
+href="../css/all.min.css"
 rel="stylesheet"
 />
 <link
-href="./bootstrap/css/bootstrap.min.css"
+href="../bootstrap/css/bootstrap.min.css"
 rel="stylesheet"
 />
 <!-- Google Fonts -->
@@ -20,13 +20,16 @@ rel="stylesheet"
 />
 <!-- MDB -->
 <link
-href="/css/mdb.min.css"
+href="../css/mdb.min.css"
 rel="stylesheet"
 />
 <link
-href="/css/jquery.dataTables.min.css"
+href="../css/jquery.dataTables.min.css"
 rel="stylesheet"
 />
+<link href="../css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+{{-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> --}}
+{{-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
 
     <title>SEMIG-SA| ERP</title>
 </head>
@@ -104,29 +107,18 @@ background: black;
           />
         </a>
         <!-- Left links -->
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="#">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('clients.index')}}">Clients</a>
+            <a class="nav-link" href="{{route('clients.index')}}">Remises</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('typepaiement.index')}}">Mode paiements</a>
+            <a class="nav-link" href="{{route('reservation.index')}}">Contrats</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('forfaits.index')}}">Forfaits</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('association.index')}}">Association</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('offres.index')}}">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{route('local.index')}}">Local</a>
-          </li>
-        </ul>
+    
+        </ul> --}}
         <!-- Left links -->
       </div>
       <!-- Collapsible wrapper -->
@@ -173,19 +165,19 @@ background: black;
   <!-- MDB -->
 <script
 type="text/javascript"
-src="/js/jquery.min.js"
+src="../js/jquery.min.js"
 ></script>
 <script
 type="text/javascript"
-src="/js/bootstrap.min.js"
+src="../js/bootstrap.min.js"
 ></script>
 <script
 type="text/javascript"
-src="/js/jquery.dataTables.min.js"
+src="../js/jquery.dataTables.min.js"
 ></script>
   <script
   type="text/javascript"
-  src="/js/mdb.min.js"
+  src="../js/mdb.min.js"
   ></script>
   <script>
     $(document)

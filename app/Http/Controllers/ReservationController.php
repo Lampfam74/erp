@@ -15,8 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservation=Reservation::where('soft_deleted',0);
-        $reservation=Reservation::all();
+        $reservation=Reservation::where('soft_deleted',0)->get();
+        // $reservation=Reservation::all();
         return view('reservation.index',[
             'reservation'=>$reservation
         ]);
@@ -74,9 +74,11 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservation)
+    public function show( $reservation)
     {
-        //
+        $reservation=Reservation::where('id',$reservation)
+        ->where('soft_deleted',0)->get();
+       return $reservation;
     }
 
     /**

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Association;
+use App\Models\CDD;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-class AssociationController extends Controller
+
+class CddController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,7 @@ class AssociationController extends Controller
      */
     public function index()
     {
-        $association=Association::where('soft_deleted',0)->get();
-        // $association=Association::all();
-        // dd($association);
-        return view('association.index',[
-            'association'=>$association
-        ]);
+        //
     }
 
     /**
@@ -29,7 +25,7 @@ class AssociationController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -40,31 +36,37 @@ class AssociationController extends Controller
      */
     public function store(Request $request)
     {
-       $valide=$request->validate([
-            'libelle' => ['required', 'string','unique:Associations', 'max:255'],
-            'activite' => ['required', 'string', 'max:255'],
-            'adresse' => ['required', 'string',  'max:255'],
-            'telephone' => ['required','unique:Associations'],
-        ]);if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
-        Association::create([
-            'libelle'=>$request['libelle'],
-            'activite'=>$request['activite'],
-            'adresse'=>$request['adresse'],
-            'telephone'=>$request['telephone'],
+        // dd($request);
+        $request->validate([
+            'debut' => ['required', 'string', 'max:255'],
+            'forfait' => ['required'],
+            'typepaiement' => ['required'],
+            'local' => ['required'],
+            'montantPaiement'=>['required']
+
+        ]);
+        $DateFin=now();
+         CDD::create([
+            'debut'=>$request['debut'],
+            'forfait'=>$request['forfait'],
+            'typePaiement'=>$request['typepaiement'],
+            'local'=>$request['local'],
+            'dateFin'=>$DateFin,
+            'montantPaiement'=>$request['montantPaiement'],
             'user_id'=>Auth::user()->id,
+            'client_id'=>$request['client_id'],
 
         ]);
         return  redirect()->back()->with('success',"ajout reussi avec success");
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Association  $association
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Association $association)
+    public function show($id)
     {
         //
     }
@@ -72,10 +74,10 @@ class AssociationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Association  $association
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Association $association)
+    public function edit($id)
     {
         //
     }
@@ -84,10 +86,10 @@ class AssociationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Association  $association
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Association $association)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -95,10 +97,10 @@ class AssociationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Association  $association
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Association $association)
+    public function destroy($id)
     {
         //
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOffresTable extends Migration
+class CreateLocalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateOffresTable extends Migration
      */
     public function up()
     {
-        Schema::create('offres', function (Blueprint $table) {
+        Schema::create('locals', function (Blueprint $table) {
             $table->id();
-            $table->string("typeLocale");
-            $table->string("ficheTechnique");
-            $table->Integer("quantiteDinsponible");
-            $table->Integer("quantiteAffecter");
-            $table->Integer("PasDePorte");
-            $table->Integer("caution");
-            $table->Integer("chargeLocative");
+            // $table->Integer("tarif");
+            $table->string("identifiants");
+            $table->string("description");
             $table->tinyInteger('user_id');
             $table->tinyInteger('soft_deleted')->default(0);
             $table->timestamps();
@@ -35,6 +31,6 @@ class CreateOffresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offres');
+        Schema::dropIfExists('locals');
     }
 }

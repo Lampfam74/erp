@@ -14,8 +14,8 @@ class ProspecteController extends Controller
      */
     public function index()
     {
-        // $prospecte=Prospecte::where('soft_deleted',0);
-        $prospecte=Prospecte::all();
+        $prospecte=Prospecte::where('soft_deleted',0)->get();
+        // $prospecte=Prospecte::all();
         return view('prospecte.index',[
             'prospecte'=>$prospecte
         ]);
@@ -68,9 +68,11 @@ class ProspecteController extends Controller
      * @param  \App\Models\Prospecte  $prospecte
      * @return \Illuminate\Http\Response
      */
-    public function show(Prospecte $prospecte)
+    public function show( $prospecte)
     {
-        //
+        $prospecte=Prospecte::where('id',$prospecte)
+        ->where('soft_deleted',0)->get();
+       return $prospecte;
     }
 
     /**

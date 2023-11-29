@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorieTable extends Migration
+class CreateCddsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateCategorieTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorie', function (Blueprint $table) {
+        Schema::create('cdds', function (Blueprint $table) {
             $table->id();
-            $table->string("libelle");
-            // $table->string("libelle");
-            $table->tinyInteger('user_id');
+            $table->date("debut");
+            $table->string("forfait");
+            $table->string("typePaiement");
+            $table->string("duree");
+            $table->string("local");
+            $table->string("dateFin");
             $table->tinyInteger('soft_deleted')->default(0);
+            $table->tinyInteger('user_id');
+            $table->tinyInteger('client_id');
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateCategorieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorie');
+        Schema::dropIfExists('cdds');
     }
 }

@@ -4,7 +4,7 @@
 
 <div class="container-fluid p-5">
     <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-        Ajouts d'un Clients
+        Ajouts d'une Nouvelles Type de paiement
 
     </button>
     <br>
@@ -22,21 +22,23 @@
     <table id="tabsous" class="table align-middle mb-0 bg-white ">
         <thead class="bg-warning">
             <tr>
-                <th class="l1" >Structure</th>
-                <th class="l1" >Telephone</th>
+
+                {{-- <th class="l1">Date Paiement</th> --}}
+                <th class="l1" >libelle</th>
+                <th class="l1" >description</th>
                 <th class="l1" >Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($clients as $per)
+            @foreach($typepaiement as $per)
             <tr>
-                <td> {{$per->structure}} </td>
-                <td> {{$per->telephone}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a></td>
+                {{-- <td>{{$per->datePaiment}}</td> --}}
+                <td> {{$per->libelle}} </td>
+                <td> {{$per->description}}</td>
+                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
             </tr>
             @endforeach
-        </tbody>
-       
+      
     </table>
 </div>
 <!-- Button trigger modal -->
@@ -53,16 +55,16 @@
                 padding: 50px;
                 width:  auto;
                  ">
-                <form action="{{ route('clients.store') }}" method="POST" style=" color: white;" enctype="multipart/form-data">
+                <form action="{{ route('typepaiement.store') }}" method="POST" style=" color: white;" enctype="multipart/form-data">
                     @csrf
                     {{-- <label for="exampleFormControlInput1" class="form-label">Date Paiement</label>
                     <input type="date" class="form-control" class="@error('datePaiment') is-invalid @enderror" id="exampleFormControlInput1" name="datePaiment"
                         placeholder=""> --}}
-                    <label for="exampleFormControlInput1" class="form-label">structure</label>
-                    <input type="text" class="form-control" class="@error('structure') is-invalid @enderror" id="exampleFormControlInput1" name="structure"
+                    <label for="exampleFormControlInput1" class="form-label">libelle</label>
+                    <input type="text" class="form-control"  id="exampleFormControlInput1" name="libelle"
                         placeholder="">
-                    <label for="exampleFormControlInput1" class="form-label">telephone</label>
-                    <input type="tel" class="form-control" class="@error('telephone') is-invalid @enderror" id="exampleFormControlInput1" name="telephone"
+                    <label for="exampleFormControlInput1" class="form-label">Description</label>
+                    <input type="tel" class="form-control"  id="exampleFormControlInput1" name="description"
                         placeholder="">
                         {{-- <label for="exampleFormControlInput1" class="form-label">Categorie</label>
                         <select class="browser-default custom-select form-select" name="local">

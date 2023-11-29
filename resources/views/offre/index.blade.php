@@ -21,7 +21,7 @@
         <thead class="bg-warning">
             <tr>
 
-                <th class="l1">Type Local</th>
+                <th class="l1">Identifiant</th>
                 <th class="l1" >Fiche Technique</th>
                 <th class="l1" >Quantite Disponible</th>
                 <th class="l1" > Quantite Affecter</th>
@@ -77,14 +77,14 @@
                       <option value="Magazin simple">magazin simple</option>
                     </select>
                     <label for="exampleFormControlInput1" class="form-label">quantite Dinsponible</label>
-                    <input type="text" class="form-control" class="@error('quantiteDinsponible') is-invalid @enderror" id="exampleFormControlInput1" name="quantiteDinsponible"
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="quantiteDinsponible"
                         placeholder="">
 
                     <label for="exampleFormControlInput1" class="form-label">quantite Affecter</label>
-                    <input type="tel" class="form-control"  class="@error('quantiteAffecter') is-invalid @enderror" id="exampleFormControlInput1" name="quantiteAffecter"
+                    <input type="tel" class="form-control"  id="exampleFormControlInput1" name="quantiteAffecter"
                         placeholder="">
                         <label for="exampleFormControlInput1" class="form-label">Pas De Porte</label>
-                        <input type="tel" class="form-control"  class="@error('PasDePorte') is-invalid @enderror" id="exampleFormControlInput1" name="PasDePorte"
+                        <input type="tel" class="form-control"  id="exampleFormControlInput1" name="PasDePorte"
                             placeholder="">
                             <label for="exampleFormControlInput1" class="form-label">Caution</label>
                             <input type="tel" class="form-control"  class="@error('caution') is-invalid @enderror" id="exampleFormControlInput1" name="caution"

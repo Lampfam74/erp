@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientsTable extends Migration
+class CreateCdisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-
+        Schema::create('cdis', function (Blueprint $table) {
             $table->id();
-            // $table->date("datePaiment");
-            $table->string("structure");
-            $table->string("telephone");
-            // $table->string("local");
+            $table->string("montantEncaisse");
+            $table->date("dateencaisse");
+            $table->string("PasDePorteEncaisse");
+            $table->string("faciliteDePayment");
+            $table->string("loyeRemise");
+            $table->tinyInteger('local_id');
+            $table->string("cautionEncaisse");
             $table->tinyInteger('soft_deleted')->default(0);
             $table->tinyInteger('user_id');
+            $table->tinyInteger('client_id');
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('cdis');
     }
 }

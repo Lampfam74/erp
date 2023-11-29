@@ -14,8 +14,8 @@ class OffreController extends Controller
      */
     public function index()
     {
-        // $offre=Offre::where('soft_deleted',0);
-        $offre=Offre::all();
+        $offre=Offre::where('soft_deleted',0)->get();
+        // $offre=Offre::all();
         return view('offre.index',[
             'offre'=>$offre
         ]);
@@ -68,9 +68,11 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function show(Offre $offre)
+    public function show($offre)
     {
-        //
+        $offre=Offre::where('id',$offre)
+        ->where('soft_deleted',0)->get();
+       return $offre;
     }
 
     /**
@@ -79,7 +81,7 @@ class OffreController extends Controller
      * @param  \App\Models\Offre  $offre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Offre $offre)
+    public function edit($offre)
     {
         //
     }
