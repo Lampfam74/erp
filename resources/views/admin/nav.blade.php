@@ -132,36 +132,48 @@ background: black;
       <!-- Collapsible wrapper -->
 
       <!-- Right elements -->
-      <div class="d-flex align-items-center">
-        <!-- Icon -->
-        {{-- <a class="text-reset me-3" href="#">
-          <i class="fas fa-shopping-cart"></i>
-        </a> --}}
-        <div>{{Auth::user()->name}}</div>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                       @csrf
-                       <div class="nav-link">
-                           <input type="submit" class="form-control" value="Se déconnecter">
-                       </div>
-                   </form>
+       <div class="d-flex align-items-center">
+                           <div class="dropdown d-inline-block ml-2">
+                                  <a  class="header-item waves-effect" style="color:aliceblue"
+                                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      {{-- <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
+                                          alt=""> --}}
+                                      <span class="d-none d-sm-inline-block ml-1" style="color:black">
+                                      {{-- {{ Auth::user()->prenom }}  --}}
+                                      {{ Auth::user()->name }}</span>
+                                      <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right">
 
-        <!-- Notifications -->
-        <div class="dropdown">
-          {{-- <a
-            class="text-reset me-3 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a> --}}
+                                      <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                          href="{{route('profile.edit')}}">
+                                          {{ __('Profile') }}
 
-        </div>
+                                      </a>
 
-      </div>
+
+                                      <form method="POST" action="{{ route('logout') }}">
+                                           @csrf
+                                      <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                      href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                                      this.closest('form').submit();">
+                                           {{ __('Log Out') }}
+                                      </a>
+                                      </form>
+
+
+                                  </div>
+                              </div>
+
+
+
+
+
+
+
+
+
+                          </div>
       <!-- Right elements -->
     </div>
     <!-- Container wrapper -->

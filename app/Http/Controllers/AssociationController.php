@@ -41,10 +41,10 @@ class AssociationController extends Controller
     public function store(Request $request)
     {
        $valide=$request->validate([
-            'libelle' => ['required', 'string','unique:Associations', 'max:255'],
+            'libelle' => ['required', 'string', 'max:255'],
             'activite' => ['required', 'string', 'max:255'],
             'adresse' => ['required', 'string',  'max:255'],
-            'telephone' => ['required','unique:Associations'],
+            'telephone' => ['required'],
         ]);if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
         Association::create([
             'libelle'=>$request['libelle'],

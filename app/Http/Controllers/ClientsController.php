@@ -6,6 +6,7 @@ use App\Models\Clients;
 use App\Models\Forfaits;
 use App\Models\Locals;
 use App\Models\Offre;
+use App\Models\Remises;
 use App\Models\typePaiement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +47,8 @@ class ClientsController extends Controller
         // dd($request);
         $request->validate([
             // 'datePaiment' => 'required',
-            'structure' => ['required', 'string','unique:Clients', 'max:255'],
-            'telephone' => ['required',],
+            'structure' => ['required', 'string', 'max:255'],
+            'telephone' => ['required'],
             // 'local' => ['required'],
             // 'categorie' => ['required'],
             // 'montantEncaisse' => ['required'],
@@ -88,12 +89,13 @@ class ClientsController extends Controller
         $forfaits=Forfaits::where('soft_deleted',0)->get();
         $typepaiement=typePaiement::where('soft_deleted',0)->get();
         $locals=Offre::where('soft_deleted',0)->get();
-
+         $remises=Remises::where('soft_deleted',0)->get();
         $clients_id=$id;
         return view('clients.show',[
             'clients'=>$clients,
             'id'=>$clients_id,
             'forfaits'=>$forfaits,
+             'remises'=>$remises,
             'typepaiement'=>$typepaiement,
             'locals'=>$locals
         ]);

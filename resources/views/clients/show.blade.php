@@ -19,12 +19,20 @@
         {{ session()->get('data') }}
     </div>
     @endif
+       @if(count($errors) > 0)
+               @foreach( $errors->all() as $message )
+                 <div class="alert alert-danger display-hide">
+                 <button class="close" data-close="alert"></button>
+                 <span>{{ $message }}</span>
+                 </div>
+               @endforeach
+             @endif
     {{-- <table id="tabsous" class="table align-middle mb-0 bg-white ">
         <thead class="bg-warning">
             <tr>
                 <th class="l1">Structure</th>
                 <th class="l1">Telephone</th>
-                
+
                 <th class="l1">Actions</th>
             </tr>
         </thead>
@@ -40,7 +48,7 @@
         </tbody>
     </table> --}}
     <div class="well">
-    
+
         <div id="myTabContent" class="tab-content container">
           <div class="tab-pane active in" id="home">
             <form id="tab" action="{{ route('cdd.store') }}" method="post" enctype="multipart/form-data">
@@ -55,7 +63,7 @@
                     @empty
                        <option value=""> pas de forfaits disponible</option>
                     @endforelse
-                   
+
                 </select>
                 <label class="label">type Paiement</label>
                 <select name="typepaiement" id="" class="form-control">
@@ -66,7 +74,7 @@
                     @endforelse
                 </select>
                 <label>Durée</label>
-                <input type="number" name="dureed"  class="input-xlarge form-control">
+                <input type="number" name="duree"  class="input-xlarge form-control">
                 <label class="label">Local</label>
                 <select name="local" id="" class="form-control">
                     @forelse ($locals as $for)
@@ -82,7 +90,7 @@
             </form>
           </div>
           <div class="tab-pane fade" id="profile">
-            <form id="tab2" action="{{ route('cdd.store') }}" method="post" enctype="multipart/form-data">
+            <form id="tab2" action="{{ route('cdi.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="client_id" value="{{$id}}" id="">
                 <label>Date Paiement</label>
@@ -94,15 +102,33 @@
                 <label>Faciliter de Paiement</label>
                 <input type="text" name="faciliteDePayment" class="input-xlarge form-control">
                 {{-- loyer remise --}}
+                <label> Local</label>
+                                <select name="loyeRemise" id="" class="form-control">
+                                                    @forelse ($locals as $for)
+                                                    <option value="{{ $for->id }}">{{ $for->typeLocale }} : {{ $for->ficheTechnique }}  </option>
+                                                    @empty
+                                                       <option value="">  pas d'offres</option>
+                                                    @endforelse
+                                                </select>
                 <label> Remise sur Loyer</label>
-                <input type="number" name="loyeRemise" class="input-xlarge form-control">
+                <select name="loyeRemise" id="" class="form-control">
+                                    @forelse ($remises as $for)
+                                    <option value="{{ $for->id }}">{{ $for->date }} : {{ $for->value }} % </option>
+                                    @empty
+                                       <option value="">  pas d'offres</option>
+                                    @endforelse
+                                </select>
                 <label>Caution Encaisse</label>
-                <input type="number" name="loyeRemise" class="input-xlarge form-control">
+                <input type="number" name="caution" class="input-xlarge form-control">
                 <label>type Paiement</label>
-                <select name="forfait" id="" class="form-control">
-                    <option value="1">1</option>
-                </select>
-               
+               <select name="typepaiement" id="" class="form-control">
+                                   @forelse ($typepaiement as $for)
+                                   <option value="{{ $for->libelle }}">{{ $for->libelle }} </option>
+                                   @empty
+                                      <option value=""> pas de nouvelles types d'especes</option>
+                                   @endforelse
+                               </select>
+
                <br>
                 <div>
                     <button class="btn btn-primary">Update</button>
@@ -191,7 +217,7 @@
                     <input type="text" class="form-control" class="@error('structure') is-invalid @enderror" id="exampleFormControlInput1" name="structure" placeholder="">
                     <label for="exampleFormControlInput1" class="form-label">telephone</label>
                     <input type="tel" class="form-control" class="@error('telephone') is-invalid @enderror" id="exampleFormControlInput1" name="telephone" placeholder="">
-             
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save </button>

@@ -15,13 +15,13 @@ class CreateCdisTable extends Migration
     {
         Schema::create('cdis', function (Blueprint $table) {
             $table->id();
-            $table->string("montantEncaisse");
+            $table->string("montantencaisse");
             $table->date("dateencaisse");
             $table->string("PasDePorteEncaisse");
             $table->string("faciliteDePayment");
             $table->string("loyeRemise");
             $table->tinyInteger('local_id');
-            $table->string("cautionEncaisse");
+            $table->string("caution");
             $table->tinyInteger('soft_deleted')->default(0);
             $table->tinyInteger('user_id');
             $table->tinyInteger('client_id');

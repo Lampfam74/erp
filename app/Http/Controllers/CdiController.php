@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Cdis;
+use Illuminate\Support\Facades\Auth;
 class CdiController extends Controller
 {
     /**
@@ -34,7 +35,27 @@ class CdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'dateencaisse'=>['required'],
+         'montantencaisse'=>['required'],
+          'pasDePorteEncaisse'=>['required'],
+           'faciliteDePayment'=>['required'],
+            'loyeRemise'=>['required'],
+            'caution'=>['required'],
+            'typepaiement'=>['required']
+        ]);
+        Cdis::create([
+        'dateencaisse'=>$request['dateencaisse'],
+                 'montantencaisse'=>$request['montantencaisse'],
+                  'montantencaisse'=>$request['montantencaisse'],
+                   'faciliteDePayment'=>$request['faciliteDePayment'],
+                    'loyeRemise'=>$request['loyeRemise'],
+                    'caution'=>$request['caution'],
+                    'typepaiement'=>$request['typepaiement'],
+                     'user_id'=>Auth::user()->id,
+                      'client_id'=>$request['client_id'],
+        ]);
+        return  redirect()->back()->with('success','ajouter avec success');
     }
 
     /**

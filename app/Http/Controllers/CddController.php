@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CDD;
+use App\Models\Cdds;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,17 +42,17 @@ class CddController extends Controller
             'forfait' => ['required'],
             'typepaiement' => ['required'],
             'local' => ['required'],
-            'montantPaiement'=>['required']
+//             'montantPaiement'=>['required']
 
         ]);
         $DateFin=now();
-         CDD::create([
+         Cdds::create([
             'debut'=>$request['debut'],
             'forfait'=>$request['forfait'],
             'typePaiement'=>$request['typepaiement'],
             'local'=>$request['local'],
+            'duree'=>$request['duree'],
             'dateFin'=>$DateFin,
-            'montantPaiement'=>$request['montantPaiement'],
             'user_id'=>Auth::user()->id,
             'client_id'=>$request['client_id'],
 
