@@ -1,5 +1,5 @@
-@extends('./admin/nav')
-@section('content')
+@extends('admin.nav')
+@section('contents')
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight  col-sm">
         {{ __('Profile') }}
@@ -22,7 +22,7 @@
 
         {{-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
             <div class="max-w-xl">
-//                 @include('profile.partials.delete-user-form')
+                 @include('profile.partials.delete-user-form')
             </div>
         </div> --}}
     </div>

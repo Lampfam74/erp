@@ -75,6 +75,8 @@
                 </select>
                 <label>Durée</label>
                 <input type="number" name="duree"  class="input-xlarge form-control">
+                  <label>Produits</label>
+                 <input type="text" name="produit"  class="input-xlarge form-control">
                 <label class="label">Local</label>
                 <select name="local" id="" class="form-control">
                     @forelse ($locals as $for)

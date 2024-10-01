@@ -19,6 +19,7 @@ class CreateCddsTable extends Migration
             $table->string("forfait");
             $table->string("typePaiement");
             $table->string("duree");
+            $table->string("produit");
             $table->string("local");
             $table->string("dateFin");
             $table->tinyInteger('soft_deleted')->default(0);
