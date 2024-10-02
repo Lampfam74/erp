@@ -97,39 +97,35 @@
                 <input type="hidden" name="client_id" value="{{$id}}" id="">
                 <label>Date Paiement</label>
                 <input type="date" name="dateencaisse" value="<?php echo Date('Y-m-d')?>" class="input-xlarge form-control">
-                <label>Montant Encaissement</label>
-                <input type="number" name="montantencaisse" class="input-xlarge form-control">
-                <label>Pas de Porte Encaisse</label>
-                <input type="number" name="pasDePorteEncaisse" class="input-xlarge form-control">
-                <label>Faciliter de Paiement</label>
-                <input type="text" name="faciliteDePayment" class="input-xlarge form-control">
+                <label>Nombre de Magasin</label>
+                  <input type="number" name="nombre" value="1" class="input-xlarge form-control">
                 {{-- loyer remise --}}
                 <label> Local</label>
-                                <select name="loyeRemise" id="" class="form-control">
+                                <select name="local_id" id="" class="form-control" >
                                                     @forelse ($locals as $for)
                                                     <option value="{{ $for->id }}">{{ $for->typeLocale }} : {{ $for->ficheTechnique }}  </option>
                                                     @empty
                                                        <option value="">  pas d'offres</option>
                                                     @endforelse
                                                 </select>
+                                            <label> SERIE </label>
+                                                                            <select name="serie" id="" class="form-control" >
+
+                                                                                                @forelse ($serie as $for)
+                                                                                                <option value="{{ $for->description }}">{{ $for->identifiants }} : {{ $for->description }}  </option>
+                                                                                                @empty
+                                                                                                   <option value="">  pas d'offres</option>
+                                                                                                @endforelse
+                                                                                            </select>
                 <label> Remise sur Loyer</label>
                 <select name="loyeRemise" id="" class="form-control">
+                         <option value="pas de Remise">  pas de Remise</option>
                                     @forelse ($remises as $for)
-                                    <option value="{{ $for->id }}">{{ $for->date }} : {{ $for->value }} % </option>
+                                    <option value="{{ $for->value }}">{{ $for->date }} : {{ $for->value }} % </option>
                                     @empty
                                        <option value="">  pas d'offres</option>
                                     @endforelse
                                 </select>
-                <label>Caution Encaisse</label>
-                <input type="number" name="caution" class="input-xlarge form-control">
-                <label>type Paiement</label>
-               <select name="typepaiement" id="" class="form-control">
-                                   @forelse ($typepaiement as $for)
-                                   <option value="{{ $for->libelle }}">{{ $for->libelle }} </option>
-                                   @empty
-                                      <option value=""> pas de nouvelles types d'especes</option>
-                                   @endforelse
-                               </select>
 
                <br>
                 <div>

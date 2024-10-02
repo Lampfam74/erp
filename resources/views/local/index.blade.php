@@ -25,6 +25,7 @@
 
                 {{-- <th class="l1">Date Paiement</th> --}}
                 <th class="l1" >identifiants</th>
+                 <th class="l1" >Mesure</th>
                 <th class="l1" >description</th>
                 {{-- <th class="l1" > Type Local</th> --}}
                 {{-- <th class="l1" >Categorie</th>
@@ -41,12 +42,13 @@
             <tr>
                 {{-- <td>{{$per->datePaiment}}</td> --}}
                 <td> {{$per->identifiants}} </td>
+                <td> {{$per->mesure}} </td>
                 <td> {{$per->description}}</td>
                 <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger   btn-sm btn-rounded">Supprimer</a></td>
             </tr>
             @endforeach
         </tbody>
-      
+
     </table>
 </div>
 <!-- Button trigger modal -->
@@ -71,6 +73,20 @@
                     <label for="exampleFormControlInput1" class="form-label">Identifants</label>
                     <input type="text" class="form-control"  id="exampleFormControlInput1" name="identifiants"
                         placeholder="">
+                      <label for="exampleFormControlInput1" class="form-label">Mesures</label>
+                        <select class="browser-default custom-select form-select" name="mesure">
+                                                  <option value="Magasins de 150 m2 avec chambre froide">Magasins de 150 m2 avec chambre froide</option>
+                                                  <option value="Magasins de 150 m2 sans chambre froide">Magasins de 150 m2 sans chambre froide</option>
+                                                  <option value="Magasins de 75 m2">Magasins de 75 m2</option>
+                                                  <option value="Magasins de 100 m2">Magasins de 100 m2</option>
+                                                   <option value="stockage de 500 m2">stockage de 500 m2</option>
+                                                    <option value="Kiosques">Kiosques</option>
+                                                    <option value="Restaurant 600m²">Restaurant 600m²</option>
+                                                     <option value="Chambre froide commune">Chambre froide commune</option>
+                                                     <option value="Hangar 1575m² et 800m² chambres froides">Hangar 1575m² et 800m² chambres froides</option>
+                                                      <option value="Station de maintenance 500m²">Station de maintenance 500m²</option>
+                                                </select>
+                                                placeholder="">
                     <label for="exampleFormControlInput1" class="form-label">Description</label>
                     <input type="tel" class="form-control"  id="exampleFormControlInput1" name="description"
                         placeholder="">

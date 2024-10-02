@@ -66,16 +66,24 @@
                 <form action="{{ route('offres.store') }}" method="POST" style="bg-color: rgb(0, 0, 0);" enctype="multipart/form-data">
                     @csrf
                     <label for="exampleFormControlInput1" class="form-label">Type Local</label>
-                    <select class="browser-default custom-select form-select" name="typeLocale">
-                      <option value="kiosque">Kiosque</option>
-                      <option value="Magazin simple">magazin simple</option>
-                    </select>
+                 <select name="typeLocale" id="" class="form-control" multiple>
+                     <option value="">  pas de Remise</option>
+                     @forelse ($serie as $for)
+                     <option value="{{ $for->identifiants }}">{{ $for->identifiants }}   </option>
+                     @empty
+                        <option value="">  pas d'offres</option>
+                     @endforelse
+                 </select>
                     <br>
                     <label for="exampleFormControlInput1" class="form-label">Fiche Technique</label>
-                    <select class="browser-default custom-select form-select" name="ficheTechnique">
-                      <option value="kiosque">Kiosque</option>
-                      <option value="Magazin simple">magazin simple</option>
-                    </select>
+                  <select name="ficheTechnique" id="" class="form-control" multiple>
+                                       <option value="">  pas de Remise</option>
+                                       @forelse ($serie as $for)
+                                       <option value="{{ $for->mesure }}">{{ $for->mesure }}   </option>
+                                       @empty
+                                          <option value="">  pas d'offres</option>
+                                       @endforelse
+                  </select>
                     <label for="exampleFormControlInput1" class="form-label">quantite Dinsponible</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="quantiteDinsponible"
                         placeholder="">

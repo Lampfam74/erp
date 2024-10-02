@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\{Clients,Cdds,Cdis,Forfaits,Offre};
+use Carbon\Carbon;
 class ContratsController extends Controller
 {
     /**
@@ -45,8 +46,36 @@ class ContratsController extends Controller
      */
     public function show($id)
     {
-        dd($id);
-        return view('contrats.show');
+//         dd($id);
+        $sortDirection = 'desc';
+        $forfait='';
+        $diffInDays='';
+        $local='';
+        $local_CDI='';
+        $clients=Clients::where('id',$id)->where('soft_deleted',0)->first();
+        $cdis=Cdis::where('client_id',$id)->where('soft_deleted',0)->first();
+        $cdds=Cdds::where('client_id',$id)->where('soft_deleted',0)->OrderBy('id', $sortDirection)->first();
+//         dd($cdds);
+        if($cdds!=null){
+             $diffInDays=Carbon::parse($cdds['dateFin'])->diffInDays(Carbon::now());
+                $forfait=Forfaits::where('id',$cdds['forfait'])->where('soft_deleted',0)->first();
+                $local=Offre::where('id',$cdds['local'])->where('soft_deleted',0)->first();
+        }
+     if($cdis!=null){
+//                  $diffInDays=Carbon::parse($cdds['dateFin'])->diffInDays(Carbon::now());
+//                     $forfait=Forfaits::where('id',$cdds['forfait'])->where('soft_deleted',0)->first();
+                    $local_CDI=Offre::where('id',$cdis['local_id'])->where('soft_deleted',0)->first();
+            }
+//         dd();
+        return view('contrats.show',[
+        'clients'=>$clients,
+        'cdds'=>$cdds,
+        'cdis'=>$cdis,
+        'forfait'=>$forfait,
+        'diffInDays'=>$diffInDays,
+        'local'=>$local,
+        'local_CDI'=>$local_CDI
+        ]);
     }
 
     /**

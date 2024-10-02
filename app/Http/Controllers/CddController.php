@@ -48,12 +48,13 @@ class CddController extends Controller
 //             'montantPaiement'=>['required']
 
         ]);
+        $fin='';
         $unite=Forfaits::where('id',$request['forfait'])->first();
 //         dd($unite);
            if($unite->unite==='1/sem'){
            $fin=Carbon::parse($request['debut'])->addWeeks($request['duree']);
            }
-           if($unite->unite==='1/J'){
+           if($unite->unite==='1/j'){
             $fin=Carbon::parse($request['debut'])->addDays($request['duree']);
            }
            if($unite->unite==='1/Mois'){

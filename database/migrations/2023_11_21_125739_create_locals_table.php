@@ -17,6 +17,7 @@ class CreateLocalsTable extends Migration
             $table->id();
             // $table->Integer("tarif");
             $table->string("identifiants");
+            $table->string("mesure");
             $table->string("description");
             $table->tinyInteger('user_id');
             $table->tinyInteger('soft_deleted')->default(0);

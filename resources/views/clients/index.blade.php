@@ -32,11 +32,11 @@
             <tr>
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a></td>
+                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a> &nbsp; <a href="{{route('contrats.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">contrat</a></td>
             </tr>
             @endforeach
         </tbody>
-       
+
     </table>
 </div>
 <!-- Button trigger modal -->

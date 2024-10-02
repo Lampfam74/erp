@@ -41,12 +41,14 @@ class LocalsController extends Controller
     {
         $request->validate([
             'identifiants' => ['required', 'max:255'],
+            'mesure' => ['required'],
             'description' => ['required'],
         ]);
         // if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
         Locals::create([
             'description'=>$request['description'],
             'identifiants'=>$request['identifiants'],
+            'mesure'=>$request['mesure'],
             // 'client_id'=>$request['client_id'],
             'user_id'=>Auth::user()->id,
 

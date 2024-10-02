@@ -37,21 +37,17 @@ class CdiController extends Controller
     {
         $request->validate([
         'dateencaisse'=>['required'],
-         'montantencaisse'=>['required'],
-          'pasDePorteEncaisse'=>['required'],
-           'faciliteDePayment'=>['required'],
             'loyeRemise'=>['required'],
-            'caution'=>['required'],
-            'typepaiement'=>['required']
+            'serie'=>['required'],
+            'local_id'=>['required'],
+             'nombre'=>['required']
         ]);
         Cdis::create([
         'dateencaisse'=>$request['dateencaisse'],
-                 'montantencaisse'=>$request['montantencaisse'],
-                  'montantencaisse'=>$request['montantencaisse'],
-                   'faciliteDePayment'=>$request['faciliteDePayment'],
                     'loyeRemise'=>$request['loyeRemise'],
-                    'caution'=>$request['caution'],
-                    'typepaiement'=>$request['typepaiement'],
+                    'local_id'=>$request['local_id'],
+                    'serie'=>$request['serie'],
+                      'nombre'=>$request['nombre'],
                      'user_id'=>Auth::user()->id,
                       'client_id'=>$request['client_id'],
         ]);

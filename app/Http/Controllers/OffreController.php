@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Offre;
+use App\Models\{Offre,Locals};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class OffreController extends Controller
@@ -16,8 +16,10 @@ class OffreController extends Controller
     {
         $offre=Offre::where('soft_deleted',0)->get();
         // $offre=Offre::all();
+         $serie=Locals::where('soft_deleted',0)->get();
         return view('offre.index',[
-            'offre'=>$offre
+            'offre'=>$offre,
+            'serie'=>$serie
         ]);
     }
 

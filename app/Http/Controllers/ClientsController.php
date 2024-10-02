@@ -90,6 +90,7 @@ class ClientsController extends Controller
         $typepaiement=typePaiement::where('soft_deleted',0)->get();
         $locals=Offre::where('soft_deleted',0)->get();
          $remises=Remises::where('soft_deleted',0)->get();
+         $serie=Locals::where('soft_deleted',0)->get();
         $clients_id=$id;
         return view('clients.show',[
             'clients'=>$clients,
@@ -97,7 +98,8 @@ class ClientsController extends Controller
             'forfaits'=>$forfaits,
              'remises'=>$remises,
             'typepaiement'=>$typepaiement,
-            'locals'=>$locals
+            'locals'=>$locals,
+            'serie'=>$serie
         ]);
     }
 
