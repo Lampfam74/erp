@@ -33,7 +33,9 @@
                 <th class="l1" >remise</th>
                 <th class="l1" > facilite paiement</th>
                 <th class="l1" >Caution</th> --}}
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <th class="l1" >Actions</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -42,11 +44,13 @@
                 {{-- <td>{{$per->datePaiment}}</td> --}}
                 <td> {{$per->tarif}} F cfa </td>
                 <td> {{$per->unite}}</td>
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
+                @endif
             </tr>
             @endforeach
         </tbody>
-     
+
     </table>
 </div>
 <!-- Button trigger modal -->

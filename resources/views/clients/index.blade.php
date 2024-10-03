@@ -32,7 +32,13 @@
             <tr>
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">plus</a> &nbsp; <a href="{{route('contrats.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">contrat</a></td>
+                <td>
+                    @if(Auth::user()->profil ==='RC' || Auth::user()->profil ==='RC')
+                     <a href="{{route('clients.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">Plus</a>
+                     @endif
+                    &nbsp;
+
+                <a href="{{route('contrats.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">contrat</a></td>
             </tr>
             @endforeach
         </tbody>

@@ -3,10 +3,12 @@
 {{-- <br><br><br><br><br> --}}
 
 <div class="container-fluid p-5">
+     @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
     <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
         Ajouts d'un Association
 
     </button>
+@endif
 @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}
@@ -21,28 +23,39 @@
         <thead class="bg-warning">
             <tr>
 
+                   @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <th class="l1">Identifiant</th>
+                @endif
                 <th class="l1" >Fiche Technique</th>
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <th class="l1" >Quantite Disponible</th>
                 <th class="l1" > Quantite Affecter</th>
+                @endif
                 <th class="l1" >pas de porte</th>
                 <th class="l1" >Caution</th>
                 <th class="l1" > Charge Locative</th>
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <th class="l1" >Actions</th>
+                @endif
             </tr>
         </thead>
         <tbody>
             @foreach($offre as $per)
             <tr>
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <td>{{$per->typeLocale}}</td>
+                @endif
                 <td> {{$per->ficheTechnique}} </td>
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <td> {{$per->quantiteDinsponible}}</td>
                 <td>{{$per->quantiteAffecter}}</td>
+                @endif
                 <td>{{$per->PasDePorte}}</td>
                 <td>{{$per->caution}}</td>
                 <td>{{$per->chargeLocative}}</td>
-
+           @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <td><a href="{{route('offres.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">Editer </a></td>
+            @endif
             </tr>
             @endforeach
         </tbody>

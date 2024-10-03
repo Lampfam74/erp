@@ -3,10 +3,12 @@
 {{-- <br><br><br><br><br> --}}
 
 <div class="container-fluid p-5">
+     @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
     <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
         Ajouts d'un Association
 
     </button>
+@endif
 @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}
@@ -25,7 +27,9 @@
                 <th class="l1" >Activite</th>
                 <th class="l1" >Adresse</th>
                 <th class="l1" > Numero Telephone</th>
+                 @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <th class="l1" >Actions</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -35,8 +39,9 @@
                 <td> {{$per->activite}} </td>
                 <td> {{$per->adresse}}</td>
                 <td>{{$per->telephone}}</td>
-
+          @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
                 <td><a href="{{route('association.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">Editer </a></td>
+          @endif
             </tr>
             @endforeach
         </tbody>

@@ -1,71 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" href="css/style.css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-<title>SEMIG-SA | ERP</title>
-</head>
-<body style="overflow-x:auto;">
-    <div class="container login-container">
-      <div class="row">
-        <div class="col-md-6 ads" style="padding: 20%">
-          <h1><span id="fl">SEMIG</span><span><sup id="sl">SA</sup></span></h1>
-          <div class="text-center" >
-            EXPLOITATION
-          </div>
-        </div>
-        <div class="col-md-6 login-form">
-          <div class="profile-img">
-            <img src="img\logo.jpg" alt="profile_img" height="140px" width="140px;">
-          </div>
-          <h3>register</h3>
-          <form method="POST" action="{{ route('register') }}">
-          @csrf
-            <div class="form-group">
-              <input type="name" class="form-control" name="name" placeholder="name" :value="old('name')">
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <!-- Name -->
+            <div>
+                <x-label for="name" :value="__('Name')" />
+
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="Email" :value="old('email')">
+
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
-            <div class="form-group">
-                <select class="form-select form-control" name="profil"
-							required aria-label="Default select example">
-							<option value="Directrice" selected>Directrice commercial d'exploitation</option>
-							<option value="Responsable">Responsable exploitation</option>
-							<option value="Assistant">Assistant Responsable exploitation</option>
-							<option value="autres">autres</option>
-				</select>
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Mot de passe" >
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" name="password_confirmation" placeholder="confirmation Mot de passe">
-              </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-success btn-lg btn-block">Register</button>
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
             </div>
-            <div class="form-group forget-password">
-                <a href="{{ route('login') }}">Se connecter </a>
+
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required />
             </div>
-          </form>
-          @if ($errors->any())
-                  <div class="alert alert-danger">
-                      <ul>
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
-              @endif
-        </div>
-      </div>
-    </div>
-</body>
-</html>
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-button class="ml-4">
+                    {{ __('Register') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>

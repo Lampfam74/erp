@@ -3,10 +3,17 @@
 {{-- <br><br><br><br><br> --}}
 
 <div class="container-fluid p-5">
+        @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
     <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
         Ajouts d'une Nouvelles Type de paiement
 
     </button>
+@endif
+    @if(Auth::user()->profil === 'AC')
+    <a href="" class="btn btn-success" >
+            Nouvelles Visite
+        </a>
+    @endif
     <br>
     <br>
 @if(session()->has('success'))
@@ -38,7 +45,7 @@
                 <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
             </tr>
             @endforeach
-      
+
     </table>
 </div>
 <!-- Button trigger modal -->
@@ -107,5 +114,7 @@
             </div>
         </div>
     </div>
+
+
 
 @endsection
