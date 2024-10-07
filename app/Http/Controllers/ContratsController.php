@@ -55,9 +55,13 @@ class ContratsController extends Controller
         $clients=Clients::where('id',$id)->where('soft_deleted',0)->first();
         $cdis=Cdis::where('client_id',$id)->where('soft_deleted',0)->first();
         $cdds=Cdds::where('client_id',$id)->where('soft_deleted',0)->OrderBy('id', $sortDirection)->first();
-//         dd($cdds);
+        // dd(vars: Carbon::now());
         if($cdds!=null){
-             $diffInDays=Carbon::parse($cdds['dateFin'])->diffInDays(Carbon::now());
+            $dateFin = Carbon::parse($cdds['dateFin']);
+            $nowInDakar = Carbon::now('Africa/Dakar');
+            
+            // Calcul de la différence en jours entre la date de fin et la date actuelle à Dakar
+            $diffInDays =(int) $nowInDakar->diffInDays(date: $dateFin);
                 $forfait=Forfaits::where('id',$cdds['forfait'])->where('soft_deleted',0)->first();
                 $local=Offre::where('id',$cdds['local'])->where('soft_deleted',0)->first();
         }
@@ -66,7 +70,7 @@ class ContratsController extends Controller
 //                     $forfait=Forfaits::where('id',$cdds['forfait'])->where('soft_deleted',0)->first();
                     $local_CDI=Offre::where('id',$cdis['local_id'])->where('soft_deleted',0)->first();
             }
-//         dd();
+        // dd(Carbon::parse($cdds['dateFin'])->diffInDays(Carbon::parse(date("Y-m-d"))));
         return view('contrats.show',[
         'clients'=>$clients,
         'cdds'=>$cdds,

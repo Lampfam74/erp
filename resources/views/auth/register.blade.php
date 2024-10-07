@@ -37,7 +37,7 @@
                 <select class="form-select form-control" name="profil"
 							required aria-label="Default select example">
 							<option value="DC">Directrice Commercial </option>
-							<option value="RC">Responsable Commercial</option>
+							<!-- <option value="RC">Responsable Commercial</option> -->
 							<option value="RC">Responsable Commercial</option>
 							<option value="AC">Agent Commercial</option>
 							<option value="DE">Directeur Exploitation</option>

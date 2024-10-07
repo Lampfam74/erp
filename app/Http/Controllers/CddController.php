@@ -38,7 +38,7 @@ class CddController extends Controller
     {
         // dd($request);
         $request->validate([
-            'debut' => ['required', 'string', 'max:255'],
+            'debut' => ['required'],
             'forfait' => ['required'],
             'typepaiement' => ['required'],
             'local' => ['required'],
@@ -48,20 +48,29 @@ class CddController extends Controller
 //             'montantPaiement'=>['required']
 
         ]);
-        $fin='';
+        
+        // dd($request['duree']);
         $unite=Forfaits::where('id',$request['forfait'])->first();
 //         dd($unite);
-           if($unite->unite==='1/sem'){
-           $fin=Carbon::parse($request['debut'])->addWeeks($request['duree']);
-           }
-           if($unite->unite==='1/j'){
-            $fin=Carbon::parse($request['debut'])->addDays($request['duree']);
-           }
-           if($unite->unite==='1/Mois'){
-            $fin=Carbon::parse($request['debut'])->addMonths($request['duree']);
-           }
-        $DateFin=$fin;
-//         dd($fin);
+$fin = Carbon::parse($request->debut);
+$duree = (int) $request['duree'];
+// Calcul de la date de fin en fonction de l'unité de temps
+switch ($unite->unite) {
+    case '1/sem':
+        $fin->addWeeks($duree);
+        break;
+    case '1/j':
+        $fin->addDays($duree);
+        break;
+    case '1/Mois':
+        $fin->addMonths($duree);
+        break;
+    default:
+        return back()->withErrors(['unite' => 'Unité de temps non reconnue.']);
+}
+
+ $DateFin = $fin->toDateString();
+    //    dd($DateFin);
          Cdds::create([
             'debut'=>$request['debut'],
             'forfait'=>$request['forfait'],

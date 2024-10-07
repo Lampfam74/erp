@@ -33,7 +33,7 @@
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
                 <td>
-                    @if(Auth::user()->profil ==='RC' || Auth::user()->profil ==='RC')
+                    @if(Auth::user()->profil ==='DC' || Auth::user()->profil ==='RC')
                      <a href="{{route('clients.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">Plus</a>
                      @endif
                     &nbsp;
