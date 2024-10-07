@@ -28,8 +28,7 @@ href="../css/jquery.dataTables.min.css"
 rel="stylesheet"
 />
 <link href="../css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-{{-- <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script> --}}
-{{-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
+
 
     <title>SEMIG-SA| ERP</title>
 </head>

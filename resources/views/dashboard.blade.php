@@ -1,6 +1,6 @@
 @extends('admin.nav')
 @section('contents')
-<br>
+
 @if (Auth::user()->profil==='DC' || Auth::user()->profil==='RC')
 <div class="container">
     <div class="row">
@@ -263,6 +263,7 @@
 @if (Auth::user()->profil==='DE' || Auth::user()->profil==='RE')
 <div class="container">
     <div class="row">
+        <br>
         <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
                 <h4 class="mb-0 font-size-18">Administrateur</h4>
