@@ -29,10 +29,17 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
+       if(Auth::user()->statut == true){
+        $request->session()->invalidate();
+        Auth::guard('web')->logout();
 
+        $request->session()->invalidate();
+        abort(403,'vous n\'etes pas Autoriser , car votre compte est desactiver par l\'administrateur Contacter l\'Admin');
+       }else{
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+       }
     }
 
     /**

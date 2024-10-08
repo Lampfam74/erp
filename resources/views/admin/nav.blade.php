@@ -192,14 +192,14 @@ background: black;
                                  @endif
                                  @if(Auth::user()->profil==='superadmin')
                                            <li class="nav-item">
-                                             <a class="nav-link" href="{{route('typepaiement.index')}}">User</a>
+                                             <a class="nav-link" href="{{route('users.index')}}">User</a>
                                            </li>
-                                           <li class="nav-item">
+                                           <!-- <li class="nav-item">
                                              <a class="nav-link" href="{{route('forfaits.index')}}">new user</a>
-                                           </li>
-                                           <li class="nav-item">
-                                             <a class="nav-link" href="{{route('association.index')}}"> CLients</a>
-                                           </li>
+                                           </li> -->
+                                           <!-- <li class="nav-item">
+                                             <a class="nav-link" href="{{route('clients.index')}}"> CLients</a>
+                                           </li> -->
                                            <li class="nav-item">
                                              <a class="nav-link" href="{{route('offres.index')}}">Grille Tarifaire</a>
                                            </li>

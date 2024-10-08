@@ -3,9 +3,9 @@
 
 @if (Auth::user()->profil==='DC' || Auth::user()->profil==='RC')
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="page-title-box d-flex align-items-center justify-content-between">
+    <div class="row py-4">
+        <div class="col-12 py-4">
+            <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                 <h4 class="mb-0 font-size-18">Administrateur</h4>
 
                 <div class="page-title-right">
@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="mb-4">
                         <span class="badge badge-soft-primary float-right">all</span>
-                        <h5 class="card-title mb-0">Nombres de Prof</h5>
+                        <h5 class="card-title mb-0">Nombres d'Agent</h5>
                     </div>
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
@@ -51,7 +51,7 @@
                 <div class="card-body">
                     <div class="mb-4">
                         <span class="badge badge-soft-primary float-right">all</span>
-                        <h5 class="card-title mb-0">Nombre de d'Apprenant</h5>
+                        <h5 class="card-title mb-0">Nombre de CDI</h5>
                     </div>
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
@@ -79,7 +79,7 @@
                 <div class="card-body">
                     <div class="mb-6">
                         <span class="badge badge-soft-primary float-right">all</span>
-                        <h5 class="card-title mb-0">le Nombre de Promo</h5>
+                        <h5 class="card-title mb-0">le Nombre de CDD</h5>
                     </div>
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
@@ -107,7 +107,7 @@
                 <div class="card-body">
                     <div class="mb-6">
                         <span class="badge badge-soft-primary float-right">All</span>
-                        <h5 class="card-title mb-0">Nombre utilisateur Admin</h5>
+                        <h5 class="card-title mb-0">Nombre d'Abonnement</h5>
                     </div>
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
@@ -133,9 +133,9 @@
 @if (Auth::user()->profil==='AC')
 <div class="container">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="row py-4">
+            <div class="col-12 py-4">
+                <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                     <h4 class="mb-0 font-size-18">Administrateur</h4>
 
                     <div class="page-title-right">
@@ -265,7 +265,7 @@
     <div class="row">
         <br>
         <div class="col-12">
-            <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                 <h4 class="mb-0 font-size-18">Administrateur</h4>
 
                 <div class="page-title-right">
@@ -393,9 +393,9 @@
 @if (Auth::user()->profil==='AE')
 <div class="container">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="row py-4">
+            <div class="col-12 py-4">
+                <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                     <h4 class="mb-0 font-size-18">Administrateur</h4>
 
                     <div class="page-title-right">
@@ -523,9 +523,9 @@
 @if (Auth::user()->profil==='CC')
 <div class="container">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="row py-4">
+            <div class="col-12 py-4">
+                <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                     <h4 class="mb-0 font-size-18">Administrateur</h4>
 
                     <div class="page-title-right">
@@ -653,9 +653,9 @@
 @if (Auth::user()->profil==='superadmin')
 <div class="container">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="row py-4">
+            <div class="col-12 py-4">
+                <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                     <h4 class="mb-0 font-size-18">Administrateur</h4>
 
                     <div class="page-title-right">
@@ -674,7 +674,7 @@
                     <div class="card-body">
                         <div class="mb-4">
                             <span class="badge badge-soft-primary float-right">all</span>
-                            <h5 class="card-title mb-0">Nombres de Prof</h5>
+                            <h5 class="card-title mb-0">Nombres d'utilisateur</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
@@ -701,7 +701,7 @@
                     <div class="card-body">
                         <div class="mb-4">
                             <span class="badge badge-soft-primary float-right">all</span>
-                            <h5 class="card-title mb-0">Nombre d'Apprnant</h5>
+                            <h5 class="card-title mb-0">Nombre de CDI</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
@@ -729,7 +729,7 @@
                     <div class="card-body">
                         <div class="mb-6">
                             <span class="badge badge-soft-primary float-right">all</span>
-                            <h5 class="card-title mb-0">Le Nombre de Promo</h5>
+                            <h5 class="card-title mb-0">Le Nombre de CDD</h5>
                         </div>
                         <div class="row d-flex align-items-center mb-4">
                             <div class="col-8">
