@@ -45,6 +45,7 @@ class LocalsController extends Controller
             'description' => ['required'],
         ]);
         // if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
+// dd($request);
         Locals::create([
             'description'=>$request['description'],
             'identifiants'=>$request['identifiants'],

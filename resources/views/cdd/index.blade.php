@@ -1,4 +1,4 @@
-@extends('admin.navop')
+@extends('admin.nav')
 @section('contents')
 {{-- <br><br><br><br><br> --}}
 

@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Route;
    , ContratsController, ForfaitsController, LocalsController, ProspecteController
    ,OffreController,ProfileController
    , RemisesController, ReservationController, TypePaiementController};
+use App\Models\Cdds;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +29,23 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+//     //    $user=Auth::user()->email;
+//    $cdds1=Cdds::where('soft_deleted',0)->get();
+//    foreach($cdds1 as $cdds){
+//     $dateFin = Carbon::parse($cdds['dateFin']);
+//     $nowInDakar = Carbon::now('Africa/Dakar');
+//     $diffInDays =(int) $nowInDakar->diffInDays(date: $dateFin);
+//     if($diffInDays <5){
+//         Mail::send('contrats.email.show', (array)[ $cdds,$diffInDays], function ($message) use ($diffInDays) {
+//             $message->from('Classlamp196@gmail.com', 'Admin Lamp');
+//             $message->sender('Classlamp196@gmail.com', 'Admin Lamp');
+//             $message->to('Classlamp196@gmail.com',Auth::user()->name );
+//             $message->subject('LOCATION PONCTUEL');
+//             $message->priority(3);
+//             $message->attach('/public/img/l1.png');
+//         });
+//     }
+//    }
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
