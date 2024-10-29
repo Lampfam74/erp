@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cdis;
+use App\Models\Clients;
 use Illuminate\Support\Facades\Auth;
 class CdiController extends Controller
 {
@@ -14,7 +15,12 @@ class CdiController extends Controller
      */
     public function index()
     {
-        //
+        $cdi = Cdis::where('soft_deleted',0)->get();
+        $clients=Clients::where('soft_deleted',0)->get();
+        return view("cdi.index",[
+            "cdis"=> $cdi,
+            "clients"=> $clients
+        ]);
     }
 
     /**

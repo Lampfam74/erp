@@ -1,4 +1,4 @@
-@extends('admin.navop')
+@extends('admin.nav')
 @section('contents')
 {{-- <br><br><br><br><br> --}}
 
@@ -25,21 +25,25 @@
                 <th class="l1" >Structure</th>
                 <th class="l1" >Telephone</th>
                 {{-- <th class="l1" > Type Local</th> --}}
-                {{-- <th class="l1" >Categorie</th>
+                <!-- <th class="l1" >Categorie</th>
                 <th class="l1">Montant Encaisses</th>
                 <th class="l1" >Pas de porte</th>
                 <th class="l1" >remise</th>
                 <th class="l1" > facilite paiement</th>
-                <th class="l1" >Caution</th> --}}
+                <th class="l1" >Caution</th>  -->
                 <th class="l1" >Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($clients as $per)
+            @forelse($cdis as $c)
             <tr>
+            @foreach($clients as $per)
                 {{-- <td>{{$per->datePaiment}}</td> --}}
+                @if ($per->id == $c->client_id)
                 <td> {{$per->structure}} </td>
                 <td> {{$per->telephone}}</td>
+                @endif
+                @endforeach
                 {{-- <td>{{$per->local}}</td> --}}
                 {{-- <td>{{$per->categorie}}</td>
                 <td>{{$per->montantEncaisse}}</td>
@@ -49,8 +53,12 @@
                 <td>{{$per->caution}}</td> --}}
 
                 <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">plus</a></td>
+               
+                @empty
             </tr>
-            @endforeach
+           
+          
+            @endforelse
         </tbody>
         {{-- <script>
             $(document)

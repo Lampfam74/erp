@@ -38,7 +38,9 @@
                      @endif
                     &nbsp;
 
-                <a href="{{route('contrats.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">contrat</a></td>
+                <a href="{{route('contrats.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">contrat</a>
+                <a href="{{route('convention.show',$per->id)}}" class="btn btn-success btn-sm btn-rounded">Convention</a>
+            </td>
             </tr>
             @endforeach
         </tbody>

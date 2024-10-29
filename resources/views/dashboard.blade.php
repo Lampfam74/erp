@@ -2,8 +2,8 @@
 @section('contents')
 
 @if (Auth::user()->profil==='DC' || Auth::user()->profil==='RC')
-<div class="container">
-    <div class="row py-4">
+<div class="container-fluid">
+    <div class="container">
         <div class="col-12 py-4">
             <div class="page-title-box d-flex align-items-center justify-content-between py-4">
                 <h4 class="mb-0 font-size-18">Administrateur</h4>
@@ -29,7 +29,7 @@
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                {{-- {{$count_ticket}} --}}1
+                                {{$nbr_ac}} 
                             </h2>
                         </div>
                         <div class="col-4 text-right">
@@ -56,7 +56,7 @@
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                {{-- {{$count_typeticket}} --}}1
+                                {{$nbr_cdi}}
                             </h2>
                         </div>
                         <!-- <div class="col-4 text-right">
@@ -84,7 +84,7 @@
                     <div class="row d-flex align-items-center mb-4">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                            {{-- {{$record}} --}}1
+                            {{$nbr_cdd}}
                             </h2>
                         </div>
                         <!-- <div class="col-4 text-right">

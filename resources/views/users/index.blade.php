@@ -90,51 +90,63 @@
     <div class="modal-dialog">
         <div class="modal-content container">
             <div class="modal-header" >
-                <h5 class="modal-title" id="exampleModalLabel">Ajout d'une Nouvelle Reservation</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ajout d'une Nouvelle Utilisateur</h5>
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
                     <div class="modal-body" style="
                 padding: 50px;
                 width:  auto;
                  ">
-                <form action="{{ route('prospecte.store') }}" method="POST" style=" color: white;" enctype="multipart/form-data">
-                    @csrf
-                    <label for="exampleFormControlInput1" class="form-label">Structure</label>
-                    <input type="text" class="form-control" class="@error('structure') is-invalid @enderror" id="exampleFormControlInput1" name="structure"
-                        placeholder="">
-                    <label for="exampleFormControlInput1" class="form-label">email</label>
-                    <input type="email" class="form-control" class="@error('email') is-invalid @enderror" id="exampleFormControlInput1" name="email"
-                        placeholder="">
-                    {{-- <label for="exampleFormControlInput1" class="form-label">Adresse</label>
-                    <input type="text" class="form-control" class="@error('adresse') is-invalid @enderror" id="exampleFormControlInput1" name="adresse"
-                        placeholder=""> --}}
-
-                    <label for="exampleFormControlInput1" class="form-label">Telephone</label>
-                    <input type="text" pattern="[[0-9]{9}]" class="form-control" class="@error('telephone') is-invalid @enderror" id="exampleFormControlInput1" name="telephone"
-                        placeholder="">
-                        {{-- <label for="exampleFormControlInput1" class="form-label">Ninea</label>
-                    <input type="text" class="form-control" class="@error('ninea') is-invalid @enderror" id="exampleFormControlInput1" name="ninea"
-                        placeholder=""> --}}
-                        <label for="exampleFormControlInput1" class="form-label">Contact</label>
-                        <input type="text"  class="form-control" class="@error('contact') is-invalid @enderror" id="exampleFormControlInput1" name="contact"
-                            placeholder="">
-                            <label for="exampleFormControlInput1" class="form-label">poste</label>
-                    <input type="text"  class="form-control" class="@error('poste') is-invalid @enderror" id="exampleFormControlInput1" name="poste"
-                        placeholder="">
-                        <br>
-                          <label for="exampleFormControlInput1" class="form-label">Affecter</label>
-                          <select class="browser-default custom-select form-select" name="affecter">
-                            <option value="kiosque">Kiosque</option>
-                            <option value="Magazin simple">magazin simple</option>
-                          </select>
-                            <label for="exampleFormControlInput1" class="form-label">Commentaire</label>
-                            <textarea name="commentaire" id="" cols="30" rows="10"></textarea>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save </button>
-                    </div>
-                </form>
-
+                 <form method="POST" action="{{ route('users.store') }}">
+          @csrf
+            <div class="form-group">
+              <input type="name" class="form-control" name="name" placeholder="name" :value="old('name')">
+            </div>
+            <br>
+            <div class="form-group">
+              <input type="email" class="form-control" name="email" placeholder="Email" :value="old('email')">
+            </div>
+            <br>
+            <div class="form-group">
+                <select class="form-select form-control" name="profil"
+							required aria-label="Default select example">
+							<option value="DC">Directrice Commercial </option>
+							<!-- <option value="RC">Responsable Commercial</option> -->
+							<option value="RC">Responsable Commercial</option>
+							<option value="AC">Agent Commercial</option>
+							<option value="DE">Directeur Exploitation</option>
+                            <option value="RE" >Responsable  Exploitation</option>
+							<option value="CC">Chef Comptable</option>
+							<option value="AE">Agent Exploitation</option>
+							<option value="autres">autres</option>
+				</select>
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Mot de passe" >
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password_confirmation" placeholder="confirmation Mot de passe">
+              </div>
+              <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success btn-lg btn-block">Register</button>
+            </div>
+            <br>
+            <div class="form-group forget-password">
+                <a href="{{ route('login') }}">Se connecter </a>
+            </div>
+          </form>
+          @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
 
             </div>
         </div>

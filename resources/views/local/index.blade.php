@@ -44,7 +44,7 @@
                 <td> {{$per->identifiants}} </td>
                 <td> {{$per->mesure}} </td>
                 <td> {{$per->description}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger   btn-sm btn-rounded">Supprimer</a></td>
+                <td><a href="{{route('local.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('local.destroy',$per->id)}}" class="btn btn-danger   btn-sm btn-rounded">Supprimer</a></td>
             </tr>
             @endforeach
         </tbody>

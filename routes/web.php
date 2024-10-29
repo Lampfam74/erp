@@ -5,9 +5,13 @@ use Illuminate\Support\Facades\Route;
    , AssociationController
    , CddController, SalesController,CdiController
    ,ClientsController
-   , ContratsController, ForfaitsController, LocalsController, ProspecteController
+   , ContratsController, ConventionController, ForfaitsController, LocalsController, ProspecteController
    ,OffreController,ProfileController
    , RemisesController, ReservationController, TypePaiementController};
+use App\Models\Cdds;
+use App\Models\Cdis;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +28,14 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+      $nbr_ac=User::where('profil','AC')->get()->count();
+      $nbr_cdd=Cdds::where("soft_deleted",0)->get()->count();
+      $nbr_cdi=Cdis::where("soft_deleted",0)->get()->count();
+    return view('dashboard',[
+        'nbr_ac'=>$nbr_ac,
+        'nbr_cdd'=>$nbr_cdd,
+        'nbr_cdi'=>$nbr_cdi,
+    ]);
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
@@ -41,9 +52,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('typepaiement', TypePaiementController::class);
     Route::resource('forfaits', ForfaitsController::class);
     });
-    Route::prefix('contrats')->middleware(['auth'])->group(function () {
+    Route::prefix('gestion')->middleware(['auth'])->group(function () {
         Route::resource('cdd',CddController::class);
         Route::resource('cdi',CdiController::class);
+        Route::resource('contrats',ContratsController::class);
+        Route::resource('convention',ConventionController::class);
 
     });
     Route::middleware('auth')->group(function () {
