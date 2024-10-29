@@ -25,32 +25,44 @@
                 <th class="l1" >Structure</th>
                 <th class="l1" >Telephone</th>
                 {{-- <th class="l1" > Type Local</th> --}}
-                {{-- <th class="l1" >Categorie</th>
-                <th class="l1">Montant Encaisses</th>
-                <th class="l1" >Pas de porte</th>
-                <th class="l1" >remise</th>
-                <th class="l1" > facilite paiement</th>
-                <th class="l1" >Caution</th> --}}
+                 <th class="l1" >Date debut</th>
+                <th class="l1">date Fin </th>
+                <th class="l1" >forfait</th>
+                <th class="l1" >prix unitaire</th>
+                <th class="l1" > Motant Total </th>
+                <!-- <th class="l1" >Caution</th>  -->
                 <th class="l1" >Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($clients as $per)
+            @forelse($cdds as $per)
             <tr>
                 {{-- <td>{{$per->datePaiment}}</td> --}}
-                <td> {{$per->structure}} </td>
-                <td> {{$per->telephone}}</td>
+                @foreach ($clients as $c)
+                @if ($c->id === $per->client_id)
+                <td> {{$c->structure}} </td>
+                <td> {{$c->telephone}}</td>
+                @endif
+                @endforeach
+               
                 {{-- <td>{{$per->local}}</td> --}}
-                {{-- <td>{{$per->categorie}}</td>
-                <td>{{$per->montantEncaisse}}</td>
-                <td>{{$per->PasDePorte}}</td>
-                <td>{{$per->remise}}%</td>
-                <td>{{$per->faciliteDePayment}}</td>
-                <td>{{$per->caution}}</td> --}}
+                <td>{{$per->debut}}</td>
+                <td>{{$per->dateFin}}</td>
+                @foreach ($forfaits as $f)
+                @if ($f->id == $per->forfait)
+                <td> {{$f->tarif}} </td>
+                <td> {{$per->duree}}* {{$f->unite}}</td>
+                <td> {{$per->duree*$f->tarif}} fcfa</td>
+                @endif
+                @endforeach
 
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">plus</a></td>
+                <td><a href="{{route('cdd.show',$per->id)}}" class="btn btn-link btn-sm btn-rounded">plus</a></td>
+                @empty
+                <td colspan="7">Cdd vide</td>
             </tr>
-            @endforeach
+           
+
+            @endforelse
         </tbody>
         {{-- <script>
             $(document)

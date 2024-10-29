@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Cdds,Forfaits};
+use App\Models\{Cdds, Clients, Forfaits};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+
 class CddController extends Controller
 {
     /**
@@ -15,7 +16,15 @@ class CddController extends Controller
      */
     public function index()
     {
-        //
+        $cdd = Cdds::where('soft_deleted',0)->OrderBy('id','desc')->get();
+        $clients=Clients::where('soft_deleted',0)->get();
+        $forfaits=Forfaits::where('soft_deleted',0)->get();
+        // dd($forfaits);
+        return view("cdd.index",[
+            "cdds"=> $cdd,
+            "clients"=> $clients,
+            "forfaits"=> $forfaits
+        ]);
     }
 
     /**

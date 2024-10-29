@@ -1,4 +1,4 @@
-@extends('admin.nav')
+@extends('./admin.nav')
 @section('contents')
 <div class="container">
     <div class="container row">

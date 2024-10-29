@@ -5,13 +5,18 @@ use Illuminate\Support\Facades\Route;
    , AssociationController
    , CddController, SalesController,CdiController
    ,ClientsController
-   , ContratsController, ForfaitsController, LocalsController, ProspecteController
+   , ContratsController, ConventionController, ForfaitsController, LocalsController, ProspecteController
    ,OffreController,ProfileController
    , RemisesController, ReservationController, TypePaiementController};
 use App\Models\Cdds;
+
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+
+use App\Models\Cdis;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,24 +34,16 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-//     //    $user=Auth::user()->email;
-//    $cdds1=Cdds::where('soft_deleted',0)->get();
-//    foreach($cdds1 as $cdds){
-//     $dateFin = Carbon::parse($cdds['dateFin']);
-//     $nowInDakar = Carbon::now('Africa/Dakar');
-//     $diffInDays =(int) $nowInDakar->diffInDays(date: $dateFin);
-//     if($diffInDays <5){
-//         Mail::send('contrats.email.show', (array)[ $cdds,$diffInDays], function ($message) use ($diffInDays) {
-//             $message->from('Classlamp196@gmail.com', 'Admin Lamp');
-//             $message->sender('Classlamp196@gmail.com', 'Admin Lamp');
-//             $message->to('Classlamp196@gmail.com',Auth::user()->name );
-//             $message->subject('LOCATION PONCTUEL');
-//             $message->priority(3);
-//             $message->attach('/public/img/l1.png');
-//         });
-//     }
-//    }
-    return view('dashboard');
+
+      $nbr_ac=User::where('profil','AC')->get()->count();
+      $nbr_cdd=Cdds::where("soft_deleted",0)->get()->count();
+      $nbr_cdi=Cdis::where("soft_deleted",0)->get()->count();
+    return view('dashboard',[
+        'nbr_ac'=>$nbr_ac,
+        'nbr_cdd'=>$nbr_cdd,
+        'nbr_cdi'=>$nbr_cdi,
+    ]);
+
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
@@ -63,9 +60,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('typepaiement', TypePaiementController::class);
     Route::resource('forfaits', ForfaitsController::class);
     });
-    Route::prefix('contrats')->middleware(['auth'])->group(function () {
+    Route::prefix('gestion')->middleware(['auth'])->group(function () {
         Route::resource('cdd',CddController::class);
         Route::resource('cdi',CdiController::class);
+        Route::resource('contrats',ContratsController::class);
+        Route::resource('convention',ConventionController::class);
 
     });
     Route::middleware('auth')->group(function () {

@@ -42,7 +42,7 @@
                 {{-- <td>{{$per->datePaiment}}</td> --}}
                 <td> {{$per->libelle}} </td>
                 <td> {{$per->description}}</td>
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
+                <td><a href="{{route('typepaiement.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('typepaiement.destroy',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
             </tr>
             @endforeach
 

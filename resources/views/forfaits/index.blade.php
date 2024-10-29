@@ -45,7 +45,7 @@
                 <td> {{$per->tarif}} F cfa </td>
                 <td> {{$per->unite}}</td>
                  @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
-                <td><a href="{{route('clients.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('clients.show',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
+                <td><a href="{{route('forfaits.show',$per->id)}}" class="btn btn-primary btn-sm btn-rounded">Editer</a><a href="{{route('forfaits.destroy',$per->id)}}" class="btn btn-danger btn-sm btn-rounded">Supprimer</a></td>
                 @endif
             </tr>
             @endforeach
