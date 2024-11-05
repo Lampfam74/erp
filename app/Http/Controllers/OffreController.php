@@ -44,7 +44,7 @@ class OffreController extends Controller
         $valide=$request->validate([
             'typeLocale' => ['required', 'string', 'max:255'],
             'ficheTechnique' => ['required'],
-            'quantiteDinsponible' => ['required'],
+            // 'quantiteDinsponible' => ['required'],
             'quantiteAffecter' => ['required'],
             'PasDePorte' => ['required'],
             'caution' => ['required'],
@@ -53,7 +53,7 @@ class OffreController extends Controller
         Offre::create([
             'typeLocale'=>$request['typeLocale'],
             'ficheTechnique'=>$request['ficheTechnique'],
-            'quantiteDinsponible'=>$request['quantiteDinsponible'],
+            // 'quantiteDinsponible'=>$request['quantiteDinsponible'],
             'quantiteAffecter'=>$request['quantiteAffecter'],
             'PasDePorte'=>$request['PasDePorte'],
             'caution'=>$request['caution'],

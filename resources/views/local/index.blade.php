@@ -24,7 +24,7 @@
             <tr>
 
                 {{-- <th class="l1">Date Paiement</th> --}}
-                <th class="l1" >identifiants</th>
+                <th class="l1" >Quantite disponible</th>
                  <th class="l1" >Mesure</th>
                 <th class="l1" >description</th>
                 {{-- <th class="l1" > Type Local</th> --}}
@@ -70,7 +70,7 @@
                     {{-- <label for="exampleFormControlInput1" class="form-label">Date Paiement</label>
                     <input type="date" class="form-control" class="@error('datePaiment') is-invalid @enderror" id="exampleFormControlInput1" name="datePaiment"
                         placeholder=""> --}}
-                    <label for="exampleFormControlInput1" class="form-label">Identifants</label>
+                    <label for="exampleFormControlInput1" class="form-label">Quantite disponible</label>
                     <input type="text" class="form-control"  id="exampleFormControlInput1" name="identifiants"
                         placeholder="">
                       <label for="exampleFormControlInput1" class="form-label">Mesures</label>

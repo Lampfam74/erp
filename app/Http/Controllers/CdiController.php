@@ -46,14 +46,14 @@ class CdiController extends Controller
             'loyeRemise'=>['required'],
             'serie'=>['required'],
             'local_id'=>['required'],
-             'nombre'=>['required']
+            //  'nombre'=>['required']
         ]);
         Cdis::create([
         'dateencaisse'=>$request['dateencaisse'],
                     'loyeRemise'=>$request['loyeRemise'],
                     'local_id'=>$request['local_id'],
                     'serie'=>$request['serie'],
-                      'nombre'=>$request['nombre'],
+                    //   'nombre'=>$request['nombre'],
                      'user_id'=>Auth::user()->id,
                       'client_id'=>$request['client_id'],
         ]);

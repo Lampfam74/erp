@@ -97,9 +97,16 @@
                 <input type="hidden" name="client_id" value="{{$id}}" id="">
                 <label>Date Paiement</label>
                 <input type="date" name="dateencaisse" value="<?php echo Date('Y-m-d')?>" class="input-xlarge form-control">
-                <label>Nombre de Magasin</label>
+                {{-- <label>Nombre de Magasin</label>
                   <input type="number" name="nombre" value="1" class="input-xlarge form-control">
-                {{-- loyer remise --}}
+                  <select name="nombre" id="" class="form-control" >
+                    @forelse ($locals as $for)
+                    <option value="{{ $for->quantiteAffecter }}">{{ $for->quantiteAffecter }}  </option>
+                    @empty
+                       <option value="">  pas d'offres</option>
+                    @endforelse
+                </select> --}}
+                  {{-- loyer remise --}}
                 <label> Local</label>
                                 <select name="local_id" id="" class="form-control" >
                                                     @forelse ($locals as $for)
@@ -112,7 +119,7 @@
                                                                             <select name="serie" id="" class="form-control" >
 
                                                                                                 @forelse ($serie as $for)
-                                                                                                <option value="{{ $for->description }}">{{ $for->identifiants }} : {{ $for->description }}  </option>
+                                                                                                <option value="{{ $for->description }}"> {{ $for->description }}  </option>
                                                                                                 @empty
                                                                                                    <option value="">  pas d'offres</option>
                                                                                                 @endforelse

@@ -17,7 +17,6 @@ class CreateOffresTable extends Migration
             $table->id();
             $table->string("typeLocale");
             $table->string("ficheTechnique");
-            $table->Integer("quantiteDinsponible");
             $table->Integer("quantiteAffecter");
             $table->Integer("PasDePorte");
             $table->Integer("caution");

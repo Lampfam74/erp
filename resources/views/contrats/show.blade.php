@@ -32,6 +32,12 @@
                         <h4>Contrat a Duree Indetermine</h4>
                                       <ul class="list-group">
                                                       <li class="list-group-item">Magasin : {{$local_CDI['typeLocale']}}</li>
+                                                      <li class="list-group-item">fiche Technique : {{$local_CDI['ficheTechnique']}}</li>
+                                                      <li class="list-group-item">pas de Porte : {{$local_CDI['PasDePorte']}} F CFA</li>
+                                                      <li class="list-group-item">caution : {{$local_CDI['caution']}} F CFA</li>
+                                                      <li class="list-group-item">charge Locative : {{$local_CDI['chargeLocative']}} F CFA</li>
+                                                      <li class="list-group-item">Quantite Affecter : {{$local_CDI['quantiteAffecter']}}</li>
+                                                      <li class="list-group-item">MOntant Total Mensuel : {{$local_CDI['quantiteAffecter']*$local_CDI['chargeLocative']}} F CFA</li>
                                                       <li class="list-group-item">Serie : {{$cdis->serie}} </li>
                                                        <div class="dropdown-divider"></div>
                                                       <li class="list-group-item">Remise en %: {{$cdis->loyeRemise}} </li>

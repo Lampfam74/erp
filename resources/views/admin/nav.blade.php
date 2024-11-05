@@ -249,36 +249,6 @@ box-shadow: 0px 15px 40px #7E6D5766; */
   <script type="text/javascript" src="/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="/js/mdb.min.js"></script>
-  <script>
-    $(document)
-      .ready(
-        function () {
-          $('#tabsous')
-            .DataTable(
-              {
-                "searching": true,
-                "info": false,
-                "bLengthChange": false,
-                "pageLength": 10,
-                "language": {
-                  "sEmptyTable": "Aucune donnée disponible dans le tableau",
-                  "sInfoPostFix": "",
-                  "sInfoThousands": ",",
-                  "oPaginate": {
-                    "sNext": "Suivant",
-                    "sPrevious": "Précédent"
-                  }
-                },
-                "aaSorting": [],
-                columnDefs: [{
-                  orderable: true,
-                  targets: 4
-                }]
-              });
-          $('.dataTables_length').addClass(
-            'bs-select');
-        });
-  </script>
 </body>
 
 </html>

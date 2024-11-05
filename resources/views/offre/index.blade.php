@@ -5,7 +5,7 @@
 <div class="container-fluid p-5">
      @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
     <button type="button" class="btn btn-success" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-        Ajouts d'un Association
+        Ajouts d'un Offres
 
     </button>
 @endif
@@ -28,7 +28,7 @@
                 @endif
                 <th class="l1" >Fiche Technique</th>
                  @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
-                <th class="l1" >Quantite Disponible</th>
+                {{-- <th class="l1" >Quantite Disponible</th> --}}
                 <th class="l1" > Quantite Affecter</th>
                 @endif
                 <th class="l1" >pas de porte</th>
@@ -47,7 +47,7 @@
                 @endif
                 <td> {{$per->ficheTechnique}} </td>
                  @if(Auth::user()->profil === 'DC' || Auth::user()->profil === 'RC')
-                <td> {{$per->quantiteDinsponible}}</td>
+                {{-- <td> {{$per->quantiteDinsponible}}</td> --}}
                 <td>{{$per->quantiteAffecter}}</td>
                 @endif
                 <td>{{$per->PasDePorte}}</td>
@@ -79,14 +79,7 @@
                 <form action="{{ route('offres.store') }}" method="POST" style="bg-color: rgb(0, 0, 0);" enctype="multipart/form-data">
                     @csrf
                     <label for="exampleFormControlInput1" class="form-label">Type Local</label>
-                 <select name="typeLocale" id="" class="form-control" multiple>
-                     <option value="">  pas de Remise</option>
-                     @forelse ($serie as $for)
-                     <option value="{{ $for->identifiants }}">{{ $for->identifiants }}   </option>
-                     @empty
-                        <option value="">  pas d'offres</option>
-                     @endforelse
-                 </select>
+                 <input type="text" name="typeLocale" id="" class="form-control" placeholder="si plusieur separe par des ,">
                     <br>
                     <label for="exampleFormControlInput1" class="form-label">Fiche Technique</label>
                   <select name="ficheTechnique" id="" class="form-control" multiple>
@@ -97,9 +90,9 @@
                                           <option value="">  pas d'offres</option>
                                        @endforelse
                   </select>
-                    <label for="exampleFormControlInput1" class="form-label">quantite Dinsponible</label>
+                    {{-- <label for="exampleFormControlInput1" class="form-label">quantite Dinsponible</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="quantiteDinsponible"
-                        placeholder="">
+                        placeholder=""> --}}
 
                     <label for="exampleFormControlInput1" class="form-label">quantite Affecter</label>
                     <input type="tel" class="form-control"  id="exampleFormControlInput1" name="quantiteAffecter"

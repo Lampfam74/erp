@@ -16,7 +16,7 @@ class CreateCdisTable extends Migration
         Schema::create('cdis', function (Blueprint $table) {
             $table->id();
             $table->string("serie");
-            $table->integer("nombre");
+            // $table->integer("nombre");
             $table->date("dateencaisse");
             $table->string("loyeRemise");
             $table->tinyInteger('local_id');
