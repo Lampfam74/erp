@@ -21,6 +21,7 @@ use Carbon\Carbon;
 |
 */
 
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -47,10 +48,10 @@ Route::get('/all', function () {
         $diffInDays='';
         $local='';
         $local_CDI='';
-
-        $clients=Clients::where('soft_deleted',0)->first();
-        $cdis=Cdis::where('soft_deleted',0)->first();
-        $cdds=Cdds::where('soft_deleted',0)->OrderBy('id', $sortDirection)->first();
+        $forfait=Offre::where('soft_deleted',0)->get();
+        $clients=Clients::where('soft_deleted',0)->get();
+        $cdis=Cdis::where('soft_deleted',0)->get();
+        $cdds=Cdds::where('soft_deleted',0)->OrderBy('id', $sortDirection)->get();
         // dd($cdds);
         // $cdds1=Cdds::where('soft_deleted',0)->get();
         // if($cdds!=null){
@@ -68,11 +69,50 @@ Route::get('/all', function () {
     //                 $local_CDI=Offre::where('id',$cdis['local_id'])->where('soft_deleted',0)->first();
     //         }
 
-        return [
+        return json_encode([
         'clients'=>$clients,
         'cdds'=>$cdds,
         'cdis'=>$cdis,
-        // 'forfait'=>$forfait,
-        ];
+        'forfait'=>$forfait,
+        ]);
 
 })->name('alloperateur');
+//etat financier Commerciale
+Route::get('/etat-commerciale', function () {
+   $total=[];
+   $data=[];
+        $montants=0;
+        $forfait=Offre::where('soft_deleted',0)->get()->groupBy('ficheTechnique');
+        $clients=Clients::where('soft_deleted',0)->get();
+        $cdis=Cdis::where('soft_deleted',0)->get();
+        $cdds=Cdds::where('soft_deleted',0)->get();
+
+      foreach($forfait as $k=>$for){
+        foreach($for as $item){
+           $montants+=$item->chargeLocative*$item->quantiteAffecter;
+            foreach($clients as $cli){
+                foreach($cdis as $cdi){
+                    if($cdi->client_id==$cli->id && $cdi->local_id==$item->id){
+                        $data[$k]['client']=$cli;
+                        $data[$k]['local']=$item;
+                        $data[$k]['cdi']=$cdi;
+                    }
+                    return $data;
+                }
+            }
+        }
+        // $total[$k]=$montants;
+
+
+      }
+
+        // return json_encode([
+        // 'clients'=>$clients,
+        // 'cdds'=>$cdds,
+        // 'cdis'=>$cdis,
+        // 'forfait'=>$forfait,
+        // ]);
+
+
+})->name('alloperateur');
+?>

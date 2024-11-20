@@ -49,7 +49,8 @@ class OffreController extends Controller
             'PasDePorte' => ['required'],
             'caution' => ['required'],
             'chargeLocative' => ['required'],
-        ]);if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
+        ]);
+        if(!$valide) return  redirect()->back()->with('data',"Association are already save ");
         Offre::create([
             'typeLocale'=>$request['typeLocale'],
             'ficheTechnique'=>$request['ficheTechnique'],

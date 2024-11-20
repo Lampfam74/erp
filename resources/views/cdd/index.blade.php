@@ -27,8 +27,9 @@
                 {{-- <th class="l1" > Type Local</th> --}}
                  <th class="l1" >Date debut</th>
                 <th class="l1">date Fin </th>
-                <th class="l1" >forfait</th>
+                <th>Nombre jours restant</th>
                 <th class="l1" >prix unitaire</th>
+                <th class="l1" >forfait</th>
                 <th class="l1" > Motant Total </th>
                 <!-- <th class="l1" >Caution</th>  -->
                 <th class="l1" >Actions</th>
@@ -44,10 +45,11 @@
                 <td> {{$c->telephone}}</td>
                 @endif
                 @endforeach
-               
+
                 {{-- <td>{{$per->local}}</td> --}}
                 <td>{{$per->debut}}</td>
                 <td>{{$per->dateFin}}</td>
+                <td>{{floor(strtotime($per->dateFin) - strtotime(date('Y-m-d')))/(86400)}}</td>
                 @foreach ($forfaits as $f)
                 @if ($f->id == $per->forfait)
                 <td> {{$f->tarif}} </td>
@@ -60,7 +62,7 @@
                 @empty
                 <td colspan="7">Cdd vide</td>
             </tr>
-           
+
 
             @endforelse
         </tbody>
